@@ -1,0 +1,24 @@
+name: CI GitHub Actions
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Comprobar archivo
+        run: |
+          echo "Comprobando archivos..."
+          ls
+          test -f README.md
+          echo "¡El archivo README existe!"
+
+  finalizar:
+    needs: verificar 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludo final
+        run: echo "Integración continua en GitHub ejecutada con éxito."
