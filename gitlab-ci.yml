@@ -1,0 +1,16 @@
+stages:
+  - verificar
+  - finalizar
+
+test_archivo:
+  stage: verificar
+  script:
+    - echo "Comprobando archivos del proyecto..."
+    - ls
+    - test -f README.md
+    - echo "¡El archivo README existe correctamente!"
+
+saludo:
+  stage: finalizar
+  script:
+    - echo "Integración continua ejecutada con éxito."
